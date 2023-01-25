@@ -20,10 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 // * ETAPE 2 - Etablissement de la connexion a la DB
 db.sequelize
   .sync() //Synchronise tous les models automatiquement
-  .then(() =>
-    console.log("Connected with database ok. Sync done!")
-  )
-  .catch((error) => console.log("ERROR - Cannot connect with Database ", error));
+  .then(() => console.log("Connected with database ok. Sync done!"))
+  .catch((error) =>
+    console.log("ERROR - Cannot connect with Database ", error)
+  );
 
 // - ROUTER
 
@@ -33,7 +33,10 @@ app.use("/api/v1", require("./routes"));
 // - PORT
 const PORT = process.env.PORT || 3000;
 
+console.log(process.env);
+
 // - SERVER
 app.listen(PORT, () =>
+
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
