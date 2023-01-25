@@ -1,5 +1,4 @@
 const express = require("express");
-process.env.NODE_ENV = 'production';
 require("dotenv").config();
 
 const app = express();
@@ -32,12 +31,11 @@ db.sequelize
 app.use("/api/v1", require("./routes"));
 
 // - PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
-
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
