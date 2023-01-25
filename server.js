@@ -31,9 +31,9 @@ db.sequelize
 app.use("/api/v1", require("./routes"));
 
 // - PORT
-const PORT = process.env.SERVER_PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 // - SERVER
 app.listen(PORT, () =>
-  console.log(`Serveur en execution sur le port ${process.env.SERVER_PORT}`)
+  console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
