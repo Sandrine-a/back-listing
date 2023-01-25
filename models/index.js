@@ -25,6 +25,7 @@ db.User.hasMany(db.Task, {
   foreignKey: "user_id",
   as: "task",
   onDelete: "cascade",
+  
 });
 db.Task.belongsTo(db.User, {
   foreignKey: "user_id",
