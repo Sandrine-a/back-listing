@@ -28,7 +28,10 @@ db.sequelize
 // - ROUTER
 
 // Enregistrement des routes de l'API
-app.use("/api/v1", require("./routes"));
+// app.use("/api/v1", require("./routes"));
+app.use((req, res) => {
+  res.json({ message: 'Votre requête a bien été reçue !' }); 
+});
 
 // - PORT
 const PORT = process.env.PORT || 3000;
