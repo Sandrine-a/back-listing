@@ -31,11 +31,12 @@ db.sequelize
 app.use("/api/v1", require("./routes"));
 
 // - PORT
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
+
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
