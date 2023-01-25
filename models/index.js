@@ -7,11 +7,21 @@ const { Sequelize, DataTypes } = require("sequelize");
 /**
  * Creation de l'instance Sequelize via les infos venant du fichier de dbconfig
  */
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.DIALECT,
-  port: dbConfig.PORT,
-});
+let sequelize;
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL);
+} else {
+  sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+    host: dbConfig.HOST,
+    dialect: dbConfig.DIALECT,
+    port: dbConfig.PORT,
+  });
+}
+// const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+//   host: dbConfig.HOST,
+//   dialect: dbConfig.DIALECT,
+//   port: dbConfig.PORT,
+// });
 
 const db = {
   sequelize,
@@ -25,7 +35,6 @@ db.User.hasMany(db.Task, {
   foreignKey: "user_id",
   as: "task",
   onDelete: "cascade",
-  
 });
 db.Task.belongsTo(db.User, {
   foreignKey: "user_id",
