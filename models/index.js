@@ -1,7 +1,7 @@
 /**
  * FIchier qui permet de configurer l'acces a la BD et d'enregistrer les differents models via les routes
  */
-const dbConfig = require("../config/db.config"); // Import des config d'acces a la BDD
+const dbConfig = require("../config/db.config")['development']; // Import des config d'acces a la BDD
 const { Sequelize, DataTypes } = require("sequelize");
 
 /**
