@@ -7,13 +7,14 @@ const cors = require("cors"); // Import du cors config
 
 const db = require("./models/index");
 
+const rout = require("./routes");
+
 // - MIDDLEWARE
 
 // Configuration logs
 app.use(logger("dev"));
 // Configuration du CORS
-// app.use(cors());
-app.use(cors({ origin: "*" }));
+app.use(cors());
 // Configuration du parsin de la requete en json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -29,7 +30,7 @@ db.sequelize
 // - ROUTER
 
 // Enregistrement des routes de l'API
-app.use("/api/v1", require("./routes"));
+app.use("/api/v1", rout);
 
 // app.use((req, res, next) => {
 //   console.log('Time:', Date.now())
@@ -43,5 +44,6 @@ console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
+
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
