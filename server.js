@@ -7,8 +7,8 @@ const cors = require("cors"); // Import du cors config
 
 const db = require("./models/index");
 
-const user_router = require("./router/user.routes")
-const tasks_router = require("./router/task.routes")
+const users_router = require("./router/user.routes");
+const tasks_router = require("./router/task.routes");
 
 // - MIDDLEWARE
 
@@ -32,8 +32,8 @@ db.sequelize
 
 // Enregistrement des routes de l'API
 // app.use("/api/v1", require("./routes"));
-app.use("/api/v1", user_router);
-app.use("/api/v1", tasks_router);
+app.use("/api/v1/users", users_router);
+app.use("/api/v1/tasks", tasks_router);
 
 // app.use((req, res, next) => {
 //   console.log('Time:', Date.now())
@@ -47,6 +47,5 @@ console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
-
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
