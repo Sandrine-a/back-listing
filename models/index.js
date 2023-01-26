@@ -7,16 +7,13 @@ const { Sequelize, DataTypes } = require("sequelize");
 /**
  * Creation de l'instance Sequelize via les infos venant du fichier de dbconfig
  */
-let sequelize;
-if (process.env.CLEARDB_DATABASE_URL) {
-  sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL);
-} else {
-  sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-    host: dbConfig.HOST,
-    dialect: dbConfig.DIALECT,
-    port: dbConfig.PORT,
-  });
-}
+
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.DIALECT,
+  port: dbConfig.PORT,
+});
+
 // const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 //   host: dbConfig.HOST,
 //   dialect: dbConfig.DIALECT,
