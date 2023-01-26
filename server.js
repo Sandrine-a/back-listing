@@ -7,6 +7,8 @@ const cors = require("cors"); // Import du cors config
 
 const db = require("./models/index");
 
+const userRoutes = require("./router/user.routes")
+
 // - MIDDLEWARE
 
 // Configuration logs
@@ -28,12 +30,10 @@ db.sequelize
 // - ROUTER
 
 // Enregistrement des routes de l'API
-app.use("/api/v1", (req, res, next) => {
-  console.log(req.body);
-  res.status(201).json({
-    message: "Objet créé !",
-  });
-});
+// app.use("/api/v1", require("./routes"));
+
+app.use('/api/users', userRoutes);
+
 
 // - PORT
 const PORT = process.env.PORT || 3000;
@@ -42,5 +42,6 @@ console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
+
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
