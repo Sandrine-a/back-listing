@@ -1,7 +1,7 @@
 /**
  * FIchier qui permet de configurer l'acces a la BD et d'enregistrer les differents models via les routes
  */
-const dbConfig = require("../config/db.config")['development']; // Import des config d'acces a la BDD
+const dbConfig = require("../config/db.config")["development"]; // Import des config d'acces a la BDD
 const { Sequelize, DataTypes } = require("sequelize");
 
 /**
@@ -10,8 +10,9 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
-  dialect: "mysql",
+  dialect: dbConfig.DIALECT,
   port: dbConfig.PORT,
+  operatorsAliases: false,
 });
 
 // const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
