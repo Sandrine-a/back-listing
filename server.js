@@ -12,7 +12,8 @@ const db = require("./models/index");
 // Configuration logs
 app.use(logger("dev"));
 // Configuration du CORS
-app.use(cors());
+// app.use(cors());
+app.use(cors({ origin: `https://listing-db.herokuapp.com/` }));
 // Configuration du parsin de la requete en json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
