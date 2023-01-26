@@ -13,7 +13,7 @@ const db = require("./models/index");
 app.use(logger("dev"));
 // Configuration du CORS
 // app.use(cors());
-app.use(cors({ origin: `https://listing-db.herokuapp.com/` }));
+app.use(cors({ origin: "*" }));
 // Configuration du parsin de la requete en json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +43,5 @@ console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
-
   console.log(`Serveur en execution sur le port ${process.env.PORT}`)
 );
