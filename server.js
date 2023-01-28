@@ -35,11 +35,6 @@ db.sequelize
 app.use("/api/v1/users", users_router);
 app.use("/api/v1/tasks", tasks_router);
 
-// app.use((req, res, next) => {
-//   console.log('Time:', Date.now())
-//   next()
-// })
-
 // - PORT
 const PORT = process.env.PORT || 3000;
 

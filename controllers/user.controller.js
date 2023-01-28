@@ -132,7 +132,6 @@ exports.update_user = (req, res) => {
     res.status(401).json({ message: "Unauthorized!" });
   } else {
     if (password) {
-      console.log("password");
       bcrypt.hash(password, 10).then((hash) => {
         const user = {
           email: email,
