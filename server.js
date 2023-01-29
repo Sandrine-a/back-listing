@@ -38,7 +38,6 @@ app.use("/api/v1/tasks", tasks_router);
 // - PORT
 const PORT = process.env.PORT || 3000;
 
-console.log(process.env);
 
 // - SERVER
 app.listen(PORT, () =>
