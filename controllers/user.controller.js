@@ -28,7 +28,7 @@ exports.create_user = (req, res) => {
         email: email,
         username: username,
         password: hash,
-        isAdmin: true,
+        isAdmin: false,
       };
       User.create(user)
         .then((user) =>
