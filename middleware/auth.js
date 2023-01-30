@@ -8,8 +8,10 @@ module.exports = (req, res, next) => {
     //Fonction qui permet de verifier la validite du token
     const decodedToken = jwt.verify(token, process.env.USER_SECRET_TOKEN);
     const userId = decodedToken.userId;
+    const isAdmin = decodedToken.isAdmin;
     req.auth = {
       userId: userId,
+      isAdmin: isAdmin
     };
     next();
     // if (req.body.userId && req.body.userId !== userId) {

@@ -33,6 +33,10 @@ module.exports = (sequelize, datatypes) => {
         min: 5,
       },
     },
+    isAdmin: {
+      type: datatypes.BOOLEAN,
+      allowNull: false,
+    },
   });
 
   return User;

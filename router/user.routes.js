@@ -11,5 +11,6 @@ router.post("/token", user_ctrl.get_user_token); // Pour AVOIR LE TOKEN
 router.get("/me", auth, user_ctrl.get_one_user); // Pour GET USER
 router.delete("/:id", auth, user_ctrl.delete_user); // POUR DELETE
 router.put("/:id", auth ,user_ctrl.update_user); //// Voir changement mdp
+router.get("/", auth, user_ctrl.get_users); // Pour GET All USER
 
 module.exports = router;

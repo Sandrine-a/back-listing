@@ -31,7 +31,6 @@ db.sequelize
 // - ROUTER
 
 // Enregistrement des routes de l'API
-// app.use("/api/v1", require("./routes"));
 app.use("/api/v1/users", users_router);
 app.use("/api/v1/tasks", tasks_router);
 

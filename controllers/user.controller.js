@@ -28,6 +28,7 @@ exports.create_user = (req, res) => {
         email: email,
         username: username,
         password: hash,
+        isAdmin: false,
       };
       User.create(user)
         .then((user) =>
@@ -89,6 +90,7 @@ exports.get_user_token = (req, res) => {
       if (!user) {
         return res.status(401).json({ error: "Bad credentials !" });
       } else {
+        console.log("user ==", user);
         bcrypt
           .compare(password, user.password)
           .then((valid) => {
@@ -98,7 +100,7 @@ exports.get_user_token = (req, res) => {
               res.status(200).json({
                 userId: user.id,
                 token: jwt.sign(
-                  { userId: user.id },
+                  { userId: user.id, isAdmin: user.isAdmin },
                   process.env.USER_SECRET_TOKEN
                 ),
               });
@@ -187,12 +189,16 @@ exports.update_user = (req, res) => {
 exports.delete_user = (req, res) => {
   const id = Number(req.params.id); //Recuperation du id du parametre url
 
+  console.log("auth admin ==", req.auth.isAdmin);
+  console.log("id params", id);
+  console.log("req.auth.userId ==", req.auth.userId);
+
   if (!id) {
     return res.status(400).json({ message: "Invalid user" });
   }
 
   // Valider si le user dans l'authentification est = au user concerné
-  if (id != req.auth.userId) {
+  if (!req.auth.isAdmin && id != req.auth.userId ) {
     res.status(401).json({ message: "Unauthorized!" });
   } else {
     User.destroy({ where: { id } })
@@ -256,4 +262,23 @@ exports.update_user_password = (req, res) => {
         );
     });
   }
+};
+
+/**
+ * Permet de trouver un user
+ * @param {Req} req la requete provenant du client
+ * @param {Res} res la reponse sous forme userId, username, email
+ */
+exports.get_users = (req, res) => {
+  //Recuperation du id du user dans parametre url
+  //Recherche du user avec id du token
+
+  User.findAll({})
+    .then((data) => {
+      console.log(data.length);
+      res.json({ data });
+    })
+    .catch((error) =>
+      res.status(500).json({ message: "Internal ERROR !", error })
+    );
 };
