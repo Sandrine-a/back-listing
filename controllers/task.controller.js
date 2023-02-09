@@ -21,7 +21,6 @@ exports.create_task = (req, res) => {
     where: { id: req.auth.userId },
   })
     .then((user) => {
-      console.log("userID =", user.id, user.email);
       const task = {
         title,
         content,

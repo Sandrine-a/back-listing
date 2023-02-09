@@ -14,11 +14,6 @@ module.exports = (req, res, next) => {
       isAdmin: isAdmin
     };
     next();
-    // if (req.body.userId && req.body.userId !== userId) {
-    //   throw new Error(" unauthorized User!");
-    // } else {
-    //   next();
-    // }
   } catch (error) {
     res.status(401).json({ error: error });
   }
