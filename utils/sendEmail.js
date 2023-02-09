@@ -20,21 +20,29 @@ module.exports = async (email, link) => {
       from: '"Listing" <noreply@listing.com>',
       to: email,
       subject: "Réinitialisation de votre mot de passe",
-      text: `Bonjour,
+      html: `<p>Bonjour,</p>
+      <p>Nous avons reçu une demande de réinitialisation de votre mot de passe. Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce courrier électronique.</p>
+      <p>Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe dans les prochaines 5 minutes :</p>
+      <p><a href="${link}">LIEN ICI</a></p>
+      <p>Si vous avez des difficultés à cliquer sur le lien, veuillez copier et coller l'URL ci-dessus dans votre navigateur web.</p>
+      <p>Si vous avez besoin d'aide supplémentaire, veuillez nous contacter.</p>
+      <p>Cordialement,</p>
+      <p>Listing Application</p>`,
+      // text: `Bonjour,
 
-      Nous avons reçu une demande de réinitialisation de votre mot de passe. Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce courrier électronique.
-      
-      Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe dans les prochaines 5 minutes :
-      
-      ${link}
-      
-      Si vous avez des difficultés à cliquer sur le lien, veuillez copier et coller l'URL ci-dessus dans votre navigateur web.
-      
-      Si vous avez besoin d'aide supplémentaire, veuillez nous contacter.
-      
-      Cordialement,
-      
-      Listing Application`,
+      // Nous avons reçu une demande de réinitialisation de votre mot de passe. Si vous n'êtes pas à l'origine de cette demande, veuillez ignorer ce courrier électronique.
+
+      // Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe dans les prochaines 5 minutes :
+
+      // ${link}
+
+      // Si vous avez des difficultés à cliquer sur le lien, veuillez copier et coller l'URL ci-dessus dans votre navigateur web.
+
+      // Si vous avez besoin d'aide supplémentaire, veuillez nous contacter.
+
+      // Cordialement,
+
+      // Listing Application`,
     });
 
     // console.log("email ==", email);

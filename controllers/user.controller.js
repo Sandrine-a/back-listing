@@ -309,7 +309,7 @@ exports.send_forgot_email = async (req, res) => {
           // const link = `http://localhost:3000/api/v1/users/reset_password/${userExist.id}/${token}`;
           // const link = `exp://127.0.0.1:19000/api/v1/users/reset_password/?id=${userExist.id}&token=${token}`;
 
-          const link = `listingapp:///api/v1/users/reset_password/?id=${userExist.id}&token=${token}`
+          const link = `listingapp://api/v1/users/reset_password/?id=${userExist.id}&token=${token}`
 
           await sendEmail(email, link);
           res.send("mail envoyé sur sandrine");
